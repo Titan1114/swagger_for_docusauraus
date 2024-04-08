@@ -1,0 +1,5359 @@
+{
+  "openapi": "3.0.1",
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local Server"
+    }
+  ],
+  "info": {
+    "version": "0.0.1",
+    "title": "sto-exec-core",
+    "description": "",
+    "license": {
+      "name": "UNLICENSED"
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateAsset"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IAsset.Nullable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IAsset"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/{assetId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchAsset"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IAsset.Nullable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IAsset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/asset_types": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateAssetType"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IAssetType.Nullable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IAssetType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/asset_types/{assetTypeId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "assetTypeId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchAssetType"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IAssetType.Nullable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/loops": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateLoop"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ILoop.Nullable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindAllLoopsQueryDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ILoop"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/loops/{loopId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "loopId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchLoop"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ILoop.Nullable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/units": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateUnit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Prisma.JsonValue"
+                    },
+                    "site": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "nullable": false,
+                      "required": [
+                        "id",
+                        "name"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sourceId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "nullable": true,
+                  "required": [
+                    "meta",
+                    "site",
+                    "id",
+                    "name",
+                    "sourceId"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "$ref": "#/components/schemas/Prisma.JsonValue"
+                      },
+                      "site": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "nullable": false,
+                        "required": [
+                          "id",
+                          "name"
+                        ]
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "sourceId": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    },
+                    "nullable": false,
+                    "required": [
+                      "meta",
+                      "site",
+                      "id",
+                      "name",
+                      "sourceId"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/units/{unitId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "unitId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchUnit"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Prisma.JsonValue"
+                    },
+                    "site": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "nullable": false,
+                      "required": [
+                        "id",
+                        "name"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sourceId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "nullable": true,
+                  "required": [
+                    "meta",
+                    "site",
+                    "id",
+                    "name",
+                    "sourceId"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/sites": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateSite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Prisma.JsonValue"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sourceId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "nullable": true,
+                  "required": [
+                    "meta",
+                    "id",
+                    "name",
+                    "sourceId"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "meta": {
+                        "$ref": "#/components/schemas/Prisma.JsonValue"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "sourceId": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    },
+                    "nullable": false,
+                    "required": [
+                      "meta",
+                      "id",
+                      "name",
+                      "sourceId"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/assets/sites/{siteId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchSite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Prisma.JsonValue"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sourceId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "nullable": true,
+                  "required": [
+                    "meta",
+                    "id",
+                    "name",
+                    "sourceId"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/oidc/login": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "tenantCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "",
+            "required": true
+          },
+          {
+            "name": "redirectURL",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpRedirectResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/oidc/callback": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpRedirectResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/wbs": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindAllWBSQueryDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "baselineStartAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                      },
+                      "baselineFinishAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                      },
+                      "referenceId": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "parentId": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "order": {
+                        "type": "number"
+                      },
+                      "timing": {
+                        "type": "object",
+                        "properties": {
+                          "lastUpdatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "delayMinutes": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "earliestStartTime": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "earliestFinishTime": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "slackMinutes": {
+                            "type": "number",
+                            "nullable": true
+                          }
+                        },
+                        "nullable": true,
+                        "required": [
+                          "lastUpdatedAt",
+                          "delayMinutes",
+                          "earliestStartTime",
+                          "earliestFinishTime",
+                          "slackMinutes"
+                        ]
+                      }
+                    },
+                    "nullable": false,
+                    "required": [
+                      "id",
+                      "name",
+                      "baselineStartAt",
+                      "baselineFinishAt",
+                      "referenceId",
+                      "parentId",
+                      "order",
+                      "timing"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ICreateWbs"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindAllTasksQueryDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetTask"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ICreateTask"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/tasks/link": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ICreateLink"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/tasks/{taskId}": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetTask"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchTask"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetTask"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/calendar": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindAllCalendarQueryDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetCalendar"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateCalendar"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetCalendar"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/views": {
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITaskCustomView"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ITaskCustomView"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/views/{viewId}": {
+      "delete": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "viewId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/tasks/autoAssignmentRules": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindAutoAssignmentRulesQueryDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ITaskAutoAssignmentRule"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateTaskAutoAssignmentRule"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ITaskAutoAssignmentRule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/autoAssignmentRules/{taskAutoAssignmentRuleId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "taskAutoAssignmentRuleId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchTaskAutoAssignmentRule"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ITaskAutoAssignmentRule"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "taskAutoAssignmentRuleId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPlainStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/autoAssignmentRules/apply": {
+      "post": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IApplyAutoAssignmentRulesQueryDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IPlainStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people": {
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetPerson"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreatePerson"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetPerson"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people/{personId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartialICreatePerson"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetPerson"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people/departments": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateDepartment"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetDepartment.Nullable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetDepartment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people/departments/{departmentId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "departmentId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchDepartment"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetDepartment.Nullable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people/vendors": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateVendor"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetVendor.Nullable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetVendor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people/vendors/{vendorId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "vendorId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchVendor"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetVendor.Nullable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects": {
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetProject"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateProject"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/cpm": {
+      "post": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{projectId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IUpdateProject"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPlanUploadTransaction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetTransaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{transactionId}/status": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IGetTransaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{transactionId}/preview": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMergePlanPreviewResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{transactionId}/merge": {
+      "post": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IMergePlanUpload"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{transactionId}/cancel": {
+      "post": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ICreateAsset": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "unitId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "loopId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "assetTypeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "siteId",
+          "unitId",
+          "loopId",
+          "assetTypeId",
+          "name"
+        ]
+      },
+      "IAsset.Nullable": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "unit": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "loop": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "assetType": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": true,
+        "required": [
+          "meta",
+          "site",
+          "unit",
+          "loop",
+          "assetType",
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "IPatchAsset": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "unitId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "loopId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "assetTypeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false
+      },
+      "IAsset": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "unit": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "loop": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "assetType": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "meta",
+          "site",
+          "unit",
+          "loop",
+          "assetType",
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "ICreateAssetType": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "siteId",
+          "name"
+        ]
+      },
+      "IAssetType.Nullable": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          }
+        },
+        "nullable": true,
+        "required": [
+          "meta",
+          "id",
+          "name",
+          "sourceId",
+          "site"
+        ]
+      },
+      "IPatchAssetType": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "siteId"
+        ]
+      },
+      "IAssetType": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          }
+        },
+        "nullable": false,
+        "required": [
+          "meta",
+          "id",
+          "name",
+          "sourceId",
+          "site"
+        ]
+      },
+      "ICreateLoop": {
+        "type": "object",
+        "properties": {
+          "unitId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "unitId",
+          "name"
+        ]
+      },
+      "ILoop.Nullable": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "unit": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": true,
+        "required": [
+          "meta",
+          "unit",
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "IPatchLoop": {
+        "type": "object",
+        "properties": {
+          "unitId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false
+      },
+      "IFindAllLoopsQueryDTO": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "nullable": false,
+        "required": [
+          "unit"
+        ]
+      },
+      "ILoop": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "unit": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "meta",
+          "unit",
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "ICreateUnit": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "siteId",
+          "name"
+        ]
+      },
+      "Prisma.JsonValue": {
+        "oneOf": [
+          {
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "type": "number",
+            "nullable": true
+          },
+          {
+            "type": "boolean",
+            "nullable": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Prisma.JsonValue"
+            },
+            "nullable": true
+          },
+          {
+            "$ref": "#/components/schemas/Prisma.JsonObject.Nullable"
+          }
+        ],
+        "description": "From https://github.com/sindresorhus/type-fest/\nMatches any valid JSON value."
+      },
+      "Prisma.JsonObject.Nullable": {
+        "type": "object",
+        "properties": {},
+        "nullable": true,
+        "description": "From https://github.com/sindresorhus/type-fest/\nMatches a JSON object.\nThis type can be useful to enforce some input to be JSON-compatible or as a super-type to be extended from."
+      },
+      "IPatchUnit": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false
+      },
+      "ICreateSite": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "name"
+        ]
+      },
+      "IPatchSite": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "meta": {}
+        },
+        "nullable": false
+      },
+      "HttpRedirectResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatus"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "url",
+          "statusCode"
+        ]
+      },
+      "HttpStatus": {
+        "type": "number",
+        "enum": [
+          100,
+          101,
+          102,
+          103,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          300,
+          301,
+          302,
+          303,
+          304,
+          307,
+          308,
+          400,
+          401,
+          402,
+          403,
+          404,
+          405,
+          406,
+          407,
+          408,
+          409,
+          410,
+          411,
+          412,
+          413,
+          414,
+          415,
+          416,
+          417,
+          418,
+          421,
+          422,
+          424,
+          428,
+          429,
+          500,
+          501,
+          502,
+          503,
+          504,
+          505
+        ]
+      },
+      "IFindAllWBSQueryDTO": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId"
+        ]
+      },
+      "IFindAllTasksQueryDTO": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "COMPLETED",
+                "NOT_STARTED",
+                "ONGOING"
+              ]
+            }
+          },
+          "assetType": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "asset": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "department": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "vendor": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "assignee": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId"
+        ]
+      },
+      "IGetTask": {
+        "type": "object",
+        "properties": {
+          "calendar": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "milestone": {
+            "type": "string",
+            "nullable": true
+          },
+          "milestoneGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "asset": {
+            "type": "object",
+            "properties": {
+              "loop": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "nullable": true,
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "assetType": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "nullable": true,
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "loop",
+              "assetType",
+              "id",
+              "name"
+            ]
+          },
+          "department": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "baselineStartAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "referenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "order": {
+            "type": "number"
+          },
+          "wbsId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "departmentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "actualStartAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "actualFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "progressPercent": {
+            "type": "number"
+          },
+          "durationInMin": {
+            "type": "number"
+          },
+          "vendorId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "readyToStart": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "actionableDelayingShutdown": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isStaticCritical": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "activityType": {
+            "type": "string",
+            "nullable": true
+          },
+          "activitySubtype": {
+            "type": "string",
+            "nullable": true
+          },
+          "assignees": {
+            "type": "array",
+            "items": {}
+          },
+          "baseline": {
+            "type": "object",
+            "properties": {
+              "baselineStartTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "baselineFinishTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "baselineDurationMinutes": {
+                "type": "number",
+                "nullable": true
+              }
+            },
+            "nullable": true,
+            "required": [
+              "baselineStartTime",
+              "baselineFinishTime",
+              "baselineDurationMinutes"
+            ]
+          },
+          "timings": {
+            "type": "object",
+            "properties": {
+              "lastUpdatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "delayMinutes": {
+                "type": "number",
+                "nullable": true
+              },
+              "earliestStartTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "earliestFinishTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "slackMinutes": {
+                "type": "number",
+                "nullable": true
+              },
+              "predecessorsRemainingCount": {
+                "type": "number",
+                "nullable": true
+              },
+              "isCritical": {
+                "type": "boolean",
+                "nullable": true
+              }
+            },
+            "nullable": true,
+            "required": [
+              "lastUpdatedAt",
+              "delayMinutes",
+              "earliestStartTime",
+              "earliestFinishTime",
+              "slackMinutes",
+              "predecessorsRemainingCount",
+              "isCritical"
+            ]
+          }
+        },
+        "nullable": false,
+        "required": [
+          "calendar",
+          "milestone",
+          "milestoneGroup",
+          "asset",
+          "department",
+          "id",
+          "status",
+          "name",
+          "baselineStartAt",
+          "baselineFinishAt",
+          "referenceId",
+          "order",
+          "wbsId",
+          "departmentId",
+          "actualStartAt",
+          "actualFinishAt",
+          "progressPercent",
+          "durationInMin",
+          "vendorId",
+          "readyToStart",
+          "actionableDelayingShutdown",
+          "isStaticCritical",
+          "activityType",
+          "activitySubtype",
+          "assignees",
+          "baseline",
+          "timings"
+        ]
+      },
+      "ICreateTask": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "referenceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "departmentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "vendorId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "wbsId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "order": {
+            "type": "number"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "durationInMin": {
+            "type": "number"
+          },
+          "baseline": {
+            "$ref": "#/components/schemas/TaskBaseline"
+          },
+          "milestone": {
+            "type": "string",
+            "nullable": true
+          },
+          "milestoneGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "activityType": {
+            "type": "string",
+            "nullable": true
+          },
+          "activitySubtype": {
+            "type": "string",
+            "nullable": true
+          },
+          "baselineStartAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "calendarId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name",
+          "assetId",
+          "departmentId",
+          "vendorId",
+          "wbsId",
+          "order",
+          "projectId",
+          "durationInMin",
+          "calendarId"
+        ]
+      },
+      "TaskBaseline": {
+        "type": "object",
+        "properties": {
+          "baselineStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineDurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline1StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline1FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline1DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline2StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline2FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline2DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline3StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline3FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline3DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline4StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline4FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline4DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline5StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline5FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline5DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline6StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline6FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline6DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline7StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline7FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline7DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline8StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline8FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline8DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline9StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline9FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline9DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline10StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline10FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline10DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "baselineStartTime",
+          "baselineFinishTime",
+          "baselineDurationMinutes",
+          "baseline1StartTime",
+          "baseline1FinishTime",
+          "baseline1DurationMinutes",
+          "baseline2StartTime",
+          "baseline2FinishTime",
+          "baseline2DurationMinutes",
+          "baseline3StartTime",
+          "baseline3FinishTime",
+          "baseline3DurationMinutes",
+          "baseline4StartTime",
+          "baseline4FinishTime",
+          "baseline4DurationMinutes",
+          "baseline5StartTime",
+          "baseline5FinishTime",
+          "baseline5DurationMinutes",
+          "baseline6StartTime",
+          "baseline6FinishTime",
+          "baseline6DurationMinutes",
+          "baseline7StartTime",
+          "baseline7FinishTime",
+          "baseline7DurationMinutes",
+          "baseline8StartTime",
+          "baseline8FinishTime",
+          "baseline8DurationMinutes",
+          "baseline9StartTime",
+          "baseline9FinishTime",
+          "baseline9DurationMinutes",
+          "baseline10StartTime",
+          "baseline10FinishTime",
+          "baseline10DurationMinutes"
+        ]
+      },
+      "ICreateLink": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "predecessorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "successorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "lagMinutes": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "referenceId": {
+            "type": "string"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId",
+          "predecessorId",
+          "successorId",
+          "lagMinutes",
+          "type"
+        ]
+      },
+      "ICreateWbs": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "referenceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "order": {
+            "type": "number"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "baselineStartAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name",
+          "parentId",
+          "order",
+          "projectId"
+        ]
+      },
+      "IPatchTask": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "COMPLETED",
+              "NOT_STARTED",
+              "ONGOING"
+            ]
+          },
+          "progressPercent": {
+            "type": "number"
+          }
+        },
+        "nullable": false
+      },
+      "IFindAllCalendarQueryDTO": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false
+      },
+      "IGetCalendar": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "week": {},
+          "exceptions": {},
+          "referenceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "createdAt",
+          "lastUpdatedAt",
+          "projectId",
+          "name",
+          "week",
+          "exceptions",
+          "referenceId"
+        ]
+      },
+      "ICreateCalendar": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "week": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Week"
+            }
+          },
+          "exceptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Exception"
+            },
+            "nullable": true
+          },
+          "referenceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId",
+          "name",
+          "week",
+          "exceptions",
+          "referenceId"
+        ]
+      },
+      "Week": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "enum": [
+              "Friday",
+              "Monday",
+              "Saturday",
+              "Sunday",
+              "Thursday",
+              "Tuesday",
+              "Wednesday"
+            ]
+          },
+          "Range": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "End": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "Start": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "nullable": false,
+              "required": [
+                "End",
+                "Start"
+              ]
+            }
+          },
+          "Status": {
+            "type": "string"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "Name",
+          "Range",
+          "Status"
+        ]
+      },
+      "Exception": {
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Occurrences": {
+            "type": "number"
+          },
+          "Range": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Start": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "End": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "nullable": false,
+              "required": [
+                "Start",
+                "End"
+              ]
+            }
+          },
+          "Duration": {
+            "type": "object",
+            "properties": {
+              "Start": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "End": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "Start",
+              "End"
+            ]
+          },
+          "RecurrenceType": {
+            "$ref": "#/components/schemas/RecurrenceType.Nullable"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "Status",
+          "Type",
+          "Name",
+          "Occurrences",
+          "Range",
+          "Duration",
+          "RecurrenceType"
+        ]
+      },
+      "RecurrenceType.Nullable": {
+        "type": "object",
+        "properties": {
+          "recur": {
+            "type": "number"
+          },
+          "weekDays": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "monthDate": {
+            "type": "number"
+          },
+          "dayOfWeek": {
+            "type": "string"
+          },
+          "positionInMonth": {
+            "type": "string"
+          },
+          "monthName": {
+            "type": "string"
+          }
+        },
+        "nullable": true
+      },
+      "ITaskCustomView": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "filters": {},
+          "sort": {}
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "name",
+          "filters",
+          "sort"
+        ]
+      },
+      "IFindAutoAssignmentRulesQueryDTO": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId"
+        ]
+      },
+      "ITaskAutoAssignmentRule": {
+        "type": "object",
+        "properties": {
+          "department": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "shift": {
+            "type": "string"
+          },
+          "allAssetTypes": {
+            "type": "boolean"
+          },
+          "allLoops": {
+            "type": "boolean"
+          },
+          "assignees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "person": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "nullable": false,
+                  "required": [
+                    "id",
+                    "name"
+                  ]
+                }
+              },
+              "nullable": false,
+              "required": [
+                "person"
+              ]
+            }
+          },
+          "assetTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "assetType": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "nullable": false,
+                  "required": [
+                    "id",
+                    "name"
+                  ]
+                }
+              },
+              "nullable": false,
+              "required": [
+                "assetType"
+              ]
+            }
+          },
+          "loops": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "loop": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "nullable": false,
+                  "required": [
+                    "id",
+                    "name"
+                  ]
+                }
+              },
+              "nullable": false,
+              "required": [
+                "loop"
+              ]
+            }
+          }
+        },
+        "nullable": false,
+        "required": [
+          "department",
+          "id",
+          "shift",
+          "allAssetTypes",
+          "allLoops",
+          "assignees",
+          "assetTypes",
+          "loops"
+        ]
+      },
+      "ICreateTaskAutoAssignmentRule": {
+        "type": "object",
+        "properties": {
+          "loops": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "assetTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "department": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "shift": {
+            "type": "string"
+          },
+          "assignees": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "allAssetTypes": {
+            "type": "boolean"
+          },
+          "allLoops": {
+            "type": "boolean"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "loops",
+          "assetTypes",
+          "department",
+          "shift",
+          "assignees",
+          "allAssetTypes",
+          "allLoops",
+          "projectId"
+        ]
+      },
+      "IPatchTaskAutoAssignmentRule": {
+        "type": "object",
+        "properties": {
+          "loops": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "assetTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "department": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "shift": {
+            "type": "string"
+          },
+          "assignees": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "allAssetTypes": {
+            "type": "boolean"
+          },
+          "allLoops": {
+            "type": "boolean"
+          }
+        },
+        "nullable": false
+      },
+      "IPlainStatus": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "nullable": false,
+        "required": [
+          "success"
+        ]
+      },
+      "IApplyAutoAssignmentRulesQueryDTO": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId"
+        ]
+      },
+      "IGetPerson": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "department": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "isVendor": {
+            "type": "boolean"
+          },
+          "designation": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "meta",
+          "department",
+          "id",
+          "createdAt",
+          "name",
+          "username",
+          "isVendor",
+          "designation",
+          "phoneNumber",
+          "email",
+          "active"
+        ]
+      },
+      "ICreatePerson": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "departmentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "vendorId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "isVendor": {
+            "type": "boolean"
+          },
+          "designation": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "name",
+          "username",
+          "isVendor",
+          "email",
+          "active"
+        ]
+      },
+      "PartialICreatePerson": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "departmentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "vendorId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "isVendor": {
+            "type": "boolean"
+          },
+          "designation": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "description": "Make all properties in T optional"
+      },
+      "ICreateDepartment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name"
+        ]
+      },
+      "IGetDepartment.Nullable": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": true,
+        "required": [
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "IPatchDepartment": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false
+      },
+      "IGetDepartment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "ICreateVendor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name"
+        ]
+      },
+      "IGetVendor.Nullable": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": true,
+        "required": [
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "IPatchVendor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false
+      },
+      "IGetVendor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "name",
+          "sourceId"
+        ]
+      },
+      "IGetProject": {
+        "type": "object",
+        "properties": {
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineStartAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "unit": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "nullable": false,
+                  "required": [
+                    "id",
+                    "name"
+                  ]
+                }
+              },
+              "nullable": false,
+              "required": [
+                "unit"
+              ]
+            }
+          }
+        },
+        "nullable": false,
+        "required": [
+          "site",
+          "id",
+          "name",
+          "startedAt",
+          "baselineStartAt",
+          "baselineFinishAt",
+          "units"
+        ]
+      },
+      "ICreateProject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "baselineStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "estimatedFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "delayMinutes": {
+            "type": "number"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "siteId",
+          "name",
+          "units"
+        ]
+      },
+      "IUpdateProject": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "baselineStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "estimatedFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "delayMinutes": {
+            "type": "number"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "units"
+        ]
+      },
+      "IPlanUploadTransaction": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "$ref": "#/components/schemas/ITransactionPlanData"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ITransactionConfig"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "plan",
+          "config"
+        ]
+      },
+      "ITransactionPlanData": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "$ref": "#/components/schemas/ITransactionProjectData"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITransactionTaskData"
+            }
+          },
+          "wbs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITransactionWBSData"
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITransactionLinkData"
+            }
+          },
+          "calendars": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITransactionCalendarData"
+            }
+          }
+        },
+        "nullable": false,
+        "required": [
+          "project",
+          "tasks",
+          "wbs",
+          "links",
+          "calendars"
+        ]
+      },
+      "ITransactionProjectData": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "baselineStartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baselineFinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "unitRefIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "siteRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name",
+          "baselineStartTime",
+          "baselineFinishTime",
+          "unitRefIds",
+          "siteRefId"
+        ]
+      },
+      "ITransactionTaskData": {
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "departmentRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "wbsRefId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "order": {
+            "type": "number"
+          },
+          "durationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "vendorRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "calendarRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "externalSourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline": {
+            "$ref": "#/components/schemas/TaskBaseline.o1"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "referenceId",
+          "name",
+          "assetRefId",
+          "departmentRefId",
+          "wbsRefId",
+          "order",
+          "durationMinutes",
+          "vendorRefId",
+          "calendarRefId",
+          "externalSourceId",
+          "baseline"
+        ]
+      },
+      "TaskBaseline.o1": {
+        "type": "object",
+        "properties": {
+          "baselineStartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baselineFinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baselineDurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline1StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline1FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline1DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline2StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline2FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline2DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline3StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline3FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline3DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline4StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline4FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline4DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline5StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline5FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline5DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline6StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline6FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline6DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline7StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline7FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline7DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline8StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline8FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline8DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline9StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline9FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline9DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline10StartTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline10FinishTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseline10DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "baselineStartTime",
+          "baselineFinishTime",
+          "baselineDurationMinutes",
+          "baseline1StartTime",
+          "baseline1FinishTime",
+          "baseline1DurationMinutes",
+          "baseline2StartTime",
+          "baseline2FinishTime",
+          "baseline2DurationMinutes",
+          "baseline3StartTime",
+          "baseline3FinishTime",
+          "baseline3DurationMinutes",
+          "baseline4StartTime",
+          "baseline4FinishTime",
+          "baseline4DurationMinutes",
+          "baseline5StartTime",
+          "baseline5FinishTime",
+          "baseline5DurationMinutes",
+          "baseline6StartTime",
+          "baseline6FinishTime",
+          "baseline6DurationMinutes",
+          "baseline7StartTime",
+          "baseline7FinishTime",
+          "baseline7DurationMinutes",
+          "baseline8StartTime",
+          "baseline8FinishTime",
+          "baseline8DurationMinutes",
+          "baseline9StartTime",
+          "baseline9FinishTime",
+          "baseline9DurationMinutes",
+          "baseline10StartTime",
+          "baseline10FinishTime",
+          "baseline10DurationMinutes"
+        ]
+      },
+      "ITransactionWBSData": {
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "order": {
+            "type": "number"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "referenceId",
+          "name",
+          "parentRefId",
+          "order"
+        ]
+      },
+      "ITransactionLinkData": {
+        "type": "object",
+        "properties": {
+          "predecessorRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "successorRefId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "lagMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "referenceId": {
+            "type": "string"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "predecessorRefId",
+          "successorRefId",
+          "lagMinutes",
+          "type",
+          "referenceId"
+        ]
+      },
+      "ITransactionCalendarData": {
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "week": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITransactionCalendarDayData"
+            }
+          }
+        },
+        "nullable": false,
+        "required": [
+          "referenceId",
+          "name",
+          "week"
+        ]
+      },
+      "ITransactionCalendarDayData": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "range": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ITransactionShiftData"
+            }
+          }
+        },
+        "nullable": false,
+        "required": [
+          "status",
+          "name",
+          "range"
+        ]
+      },
+      "ITransactionShiftData": {
+        "type": "object",
+        "properties": {
+          "startTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "endTime": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "startTime",
+          "endTime"
+        ]
+      },
+      "ITransactionConfig": {
+        "type": "object",
+        "properties": {
+          "stoProjectId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "stoProjectId"
+        ]
+      },
+      "IGetTransaction": {
+        "type": "object",
+        "properties": {
+          "data": {},
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "uploadStatus": {
+            "$ref": "#/components/schemas/UploadStatus"
+          },
+          "validationStatus": {
+            "$ref": "#/components/schemas/ValidationStatus"
+          },
+          "validationResult": {},
+          "mergePreviewStatus": {
+            "$ref": "#/components/schemas/MergePreviewStatus"
+          },
+          "mergePreviewResult": {},
+          "mergeStatus": {
+            "$ref": "#/components/schemas/MergeStatus"
+          },
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/PlanUploadTransactionStatus"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "data",
+          "id",
+          "createdAt",
+          "lastUpdatedAt",
+          "uploadStatus",
+          "validationStatus",
+          "validationResult",
+          "mergePreviewStatus",
+          "mergePreviewResult",
+          "mergeStatus",
+          "projectId",
+          "status"
+        ]
+      },
+      "UploadStatus": {
+        "type": "string",
+        "enum": [
+          "NOT_STARTED",
+          "ONGOING",
+          "COMPLETED",
+          "FAILED"
+        ]
+      },
+      "ValidationStatus": {
+        "type": "string",
+        "enum": [
+          "NOT_STARTED",
+          "ONGOING",
+          "FAILED",
+          "SUCCEEDED"
+        ]
+      },
+      "MergePreviewStatus": {
+        "type": "string",
+        "enum": [
+          "NOT_STARTED",
+          "ONGOING",
+          "FAILED",
+          "SUCCEEDED"
+        ]
+      },
+      "MergeStatus": {
+        "type": "string",
+        "enum": [
+          "NOT_STARTED",
+          "ONGOING",
+          "FAILED",
+          "SUCCEEDED"
+        ]
+      },
+      "PlanUploadTransactionStatus": {
+        "type": "string",
+        "enum": [
+          "ONGOING",
+          "FAILED",
+          "SUCCEEDED",
+          "CANCELLED"
+        ]
+      },
+      "IMergePlanPreviewResponse": {
+        "type": "object",
+        "properties": {
+          "tasks": {
+            "type": "object",
+            "properties": {
+              "added": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ICreateTask"
+                }
+              },
+              "modified": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IUpdateTask"
+                }
+              },
+              "deleted": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IDeleteTask"
+                }
+              },
+              "rescheduled": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IUpdateTaskBaseline"
+                }
+              },
+              "unchanged": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ITransactionNoChangeWbs"
+                }
+              }
+            },
+            "nullable": false,
+            "required": [
+              "added",
+              "modified",
+              "deleted",
+              "rescheduled",
+              "unchanged"
+            ]
+          }
+        },
+        "nullable": false,
+        "required": [
+          "tasks"
+        ]
+      },
+      "IUpdateTask": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "departmentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "vendorId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "wbsId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "order": {
+            "type": "number"
+          },
+          "durationInMin": {
+            "type": "number"
+          },
+          "baseline": {
+            "$ref": "#/components/schemas/TaskBaseline"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name",
+          "assetId",
+          "departmentId",
+          "vendorId",
+          "wbsId",
+          "order",
+          "durationInMin",
+          "baseline"
+        ]
+      },
+      "IDeleteTask": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id"
+        ]
+      },
+      "IUpdateTaskBaseline": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "baselineStartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineDurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline1StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline1FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline1DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline2StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline2FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline2DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline3StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline3FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline3DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline4StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline4FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline4DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline5StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline5FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline5DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline6StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline6FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline6DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline7StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline7FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline7DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline8StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline8FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline8DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline9StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline9FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline9DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          },
+          "baseline10StartTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline10FinishTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baseline10DurationMinutes": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "taskId",
+          "baselineStartTime",
+          "baselineFinishTime",
+          "baselineDurationMinutes",
+          "baseline1StartTime",
+          "baseline1FinishTime",
+          "baseline1DurationMinutes",
+          "baseline2StartTime",
+          "baseline2FinishTime",
+          "baseline2DurationMinutes",
+          "baseline3StartTime",
+          "baseline3FinishTime",
+          "baseline3DurationMinutes",
+          "baseline4StartTime",
+          "baseline4FinishTime",
+          "baseline4DurationMinutes",
+          "baseline5StartTime",
+          "baseline5FinishTime",
+          "baseline5DurationMinutes",
+          "baseline6StartTime",
+          "baseline6FinishTime",
+          "baseline6DurationMinutes",
+          "baseline7StartTime",
+          "baseline7FinishTime",
+          "baseline7DurationMinutes",
+          "baseline8StartTime",
+          "baseline8FinishTime",
+          "baseline8DurationMinutes",
+          "baseline9StartTime",
+          "baseline9FinishTime",
+          "baseline9DurationMinutes",
+          "baseline10StartTime",
+          "baseline10FinishTime",
+          "baseline10DurationMinutes"
+        ]
+      },
+      "ITransactionNoChangeWbs": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "referenceId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "name",
+          "referenceId"
+        ]
+      },
+      "IMergePlanUpload": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string"
+          }
+        },
+        "nullable": false
+      }
+    }
+  }
+}
