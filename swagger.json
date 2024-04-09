@@ -35,7 +35,9 @@
     },
     "/assets": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -61,7 +63,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -97,7 +101,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -118,7 +124,9 @@
     },
     "/assets/{assetId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [
           {
             "name": "assetId",
@@ -155,7 +163,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [
           {
             "name": "assetId",
@@ -184,7 +194,9 @@
     },
     "/assets/asset_types": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -210,7 +222,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -246,7 +260,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -267,7 +283,9 @@
     },
     "/assets/asset_types/{assetTypeId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [
           {
             "name": "assetTypeId",
@@ -306,7 +324,9 @@
     },
     "/assets/loops": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -332,7 +352,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -368,7 +390,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -399,7 +423,9 @@
     },
     "/assets/loops/{loopId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [
           {
             "name": "loopId",
@@ -438,7 +464,9 @@
     },
     "/assets/units": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -503,7 +531,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -539,7 +569,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -599,7 +631,9 @@
     },
     "/assets/units/{unitId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [
           {
             "name": "unitId",
@@ -677,7 +711,9 @@
     },
     "/assets/sites": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -725,7 +761,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -761,7 +799,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -804,7 +844,9 @@
     },
     "/assets/sites/{siteId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "Assets"
+        ],
         "parameters": [
           {
             "name": "siteId",
@@ -865,7 +907,9 @@
     },
     "/auth/oidc/login": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Auth"
+        ],
         "parameters": [
           {
             "name": "tenantCode",
@@ -902,7 +946,9 @@
     },
     "/auth/oidc/callback": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Auth"
+        ],
         "parameters": [
           {
             "name": "code",
@@ -930,7 +976,9 @@
     },
     "/tasks/wbs": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -1034,7 +1082,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1058,7 +1108,9 @@
     },
     "/tasks": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -1087,7 +1139,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1111,7 +1165,9 @@
     },
     "/tasks/link": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1135,7 +1191,9 @@
     },
     "/tasks/{taskId}": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "taskId",
@@ -1162,7 +1220,9 @@
         }
       },
       "patch": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "taskId",
@@ -1201,7 +1261,9 @@
     },
     "/tasks/calendar": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -1230,7 +1292,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1258,7 +1322,9 @@
     },
     "/tasks/views": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1277,7 +1343,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1303,7 +1371,9 @@
     },
     "/tasks/views/{viewId}": {
       "delete": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "viewId",
@@ -1325,7 +1395,9 @@
     },
     "/tasks/autoAssignmentRules": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -1354,7 +1426,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1382,7 +1456,9 @@
     },
     "/tasks/autoAssignmentRules/{taskAutoAssignmentRuleId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "taskAutoAssignmentRuleId",
@@ -1419,7 +1495,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "taskAutoAssignmentRuleId",
@@ -1448,7 +1526,9 @@
     },
     "/tasks/autoAssignmentRules/apply": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Task"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -1476,7 +1556,9 @@
     },
     "/people": {
       "get": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1495,7 +1577,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1523,7 +1607,9 @@
     },
     "/people/{personId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [
           {
             "name": "personId",
@@ -1562,7 +1648,9 @@
     },
     "/people/departments": {
       "post": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1588,7 +1676,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1609,7 +1699,9 @@
     },
     "/people/departments/{departmentId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [
           {
             "name": "departmentId",
@@ -1648,7 +1740,9 @@
     },
     "/people/vendors": {
       "post": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1674,7 +1768,9 @@
         }
       },
       "get": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1695,7 +1791,9 @@
     },
     "/people/vendors/{vendorId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "People"
+        ],
         "parameters": [
           {
             "name": "vendorId",
@@ -1734,7 +1832,9 @@
     },
     "/projects": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Project"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1753,7 +1853,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "Project"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1779,7 +1881,9 @@
     },
     "/projects/{projectId}/cpm": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Project"
+        ],
         "parameters": [
           {
             "name": "projectId",
@@ -1806,7 +1910,9 @@
     },
     "/projects/{projectId}": {
       "patch": {
-        "tags": [],
+        "tags": [
+          "Project"
+        ],
         "parameters": [
           {
             "name": "projectId",
@@ -1843,7 +1949,9 @@
     },
     "/transactions": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Transactions"
+        ],
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1871,7 +1979,9 @@
     },
     "/transactions/{transactionId}/status": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Transactions"
+        ],
         "parameters": [
           {
             "name": "transactionId",
@@ -1900,7 +2010,9 @@
     },
     "/transactions/{transactionId}/preview": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Transactions"
+        ],
         "parameters": [
           {
             "name": "transactionId",
@@ -1929,7 +2041,9 @@
     },
     "/transactions/{transactionId}/merge": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Transactions"
+        ],
         "parameters": [
           {
             "name": "transactionId",
@@ -1958,7 +2072,9 @@
     },
     "/transactions/{transactionId}/cancel": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Transactions"
+        ],
         "parameters": [
           {
             "name": "transactionId",
