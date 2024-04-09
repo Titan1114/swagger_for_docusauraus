@@ -14,6 +14,32 @@
       "name": "UNLICENSED"
     }
   },
+  "tags": [
+    {
+      "name": "Assets",
+      "description": "For CRUD operations on Assets, Loops, Units and Sites"
+    },
+    {
+      "name": "Auth",
+      "description": "Operations about Authentication"
+    },
+    {
+      "name": "Task",
+      "description": "For CRUD operations on Tasks, WBS, Links and Calendars"
+    },
+    {
+      "name": "People",
+      "description": "Operations about People"
+    },
+    {
+      "name": "Project",
+      "description": "Operations about Project"
+    },
+    {
+      "name": "Transactions",
+      "description": "Operations about Transactions"
+    }
+  ],
   "paths": {
     "/": {
       "get": {
