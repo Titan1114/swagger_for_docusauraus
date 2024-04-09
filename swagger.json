@@ -17,7 +17,7 @@
   "tags": [
     {
       "name": "Assets",
-      "description": "For CRUD operations on Assets, Loops, Units and Sites"
+      "description": "For CRUD operations on Assets, Asset types, Loops, Units and Sites"
     },
     {
       "name": "Auth",
