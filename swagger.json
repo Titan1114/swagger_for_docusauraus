@@ -14,32 +14,6 @@
       "name": "UNLICENSED"
     }
   },
-  "tags": [
-    {
-      "name": "Assets",
-      "description": "For CRUD operations on Assets, Asset types, Loops, Units and Sites"
-    },
-    {
-      "name": "Auth",
-      "description": "Operations about Authentication"
-    },
-    {
-      "name": "Task",
-      "description": "For CRUD operations on Tasks, WBS, Links and Calendars"
-    },
-    {
-      "name": "People",
-      "description": "Operations about People, Departments and vendors"
-    },
-    {
-      "name": "Project",
-      "description": "Operations about Project"
-    },
-    {
-      "name": "Transactions",
-      "description": "Operations about Transactions"
-    }
-  ],
   "paths": {
     "/": {
       "get": {
@@ -289,7 +263,17 @@
         "tags": [
           "Assets"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindAssetTypeDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -534,6 +518,14 @@
                     "id": {
                       "type": "string"
                     },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "lastUpdatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
                     "name": {
                       "type": "string"
                     },
@@ -547,6 +539,8 @@
                     "meta",
                     "site",
                     "id",
+                    "createdAt",
+                    "lastUpdatedAt",
                     "name",
                     "sourceId"
                   ]
@@ -607,46 +601,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type": "object",
-                    "properties": {
-                      "meta": {
-                        "$ref": "#/components/schemas/Prisma.JsonValue"
-                      },
-                      "site": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string"
-                          }
-                        },
-                        "nullable": false,
-                        "required": [
-                          "id",
-                          "name"
-                        ]
-                      },
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "sourceId": {
-                        "type": "string",
-                        "nullable": true
-                      }
-                    },
-                    "nullable": false,
-                    "required": [
-                      "meta",
-                      "site",
-                      "id",
-                      "name",
-                      "sourceId"
-                    ]
+                    "$ref": "#/components/schemas/IGetUnit"
                   }
                 }
               }
@@ -712,6 +667,14 @@
                     "id": {
                       "type": "string"
                     },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "lastUpdatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
                     "name": {
                       "type": "string"
                     },
@@ -725,6 +688,8 @@
                     "meta",
                     "site",
                     "id",
+                    "createdAt",
+                    "lastUpdatedAt",
                     "name",
                     "sourceId"
                   ]
@@ -1184,6 +1149,30 @@
         },
         "responses": {
           "201": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Task"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IPatchTaskNew"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
             "description": ""
           }
         }
@@ -1973,6 +1962,124 @@
         }
       }
     },
+    "/projects/milestones": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateMilestone"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindMilestoneDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetMilestone"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/milestone_groups": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateMilestoneGroup"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IFindMilestoneGroupDTO"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IGetMilestoneGroup"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/transactions": {
       "post": {
         "tags": [
@@ -2116,6 +2223,520 @@
         "responses": {
           "201": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/issue": {
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/IGetIssue"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {}
+                      },
+                      "nullable": false,
+                      "required": [
+                        "error"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateIssue"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "issue": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "text": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "assetId": {
+                              "type": "string"
+                            },
+                            "isOpen": {
+                              "type": "boolean"
+                            },
+                            "isCritical": {
+                              "type": "boolean"
+                            },
+                            "everCritical": {
+                              "type": "boolean"
+                            },
+                            "isResolved": {
+                              "type": "boolean"
+                            },
+                            "createdById": {
+                              "type": "string"
+                            },
+                            "editedById": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "closedById": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "resolvedById": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "projectId": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "lastUpdatedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "closedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "nullable": true
+                            },
+                            "priority": {
+                              "$ref": "#/components/schemas/PriorityChoice"
+                            }
+                          },
+                          "nullable": false,
+                          "required": [
+                            "id",
+                            "text",
+                            "name",
+                            "assetId",
+                            "isOpen",
+                            "isCritical",
+                            "everCritical",
+                            "isResolved",
+                            "createdById",
+                            "editedById",
+                            "closedById",
+                            "resolvedById",
+                            "projectId",
+                            "createdAt",
+                            "lastUpdatedAt",
+                            "closedAt",
+                            "priority"
+                          ]
+                        },
+                        "tagged_fields": {
+                          "type": "object",
+                          "properties": {
+                            "taggedDepartment": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/ITaggedDepartment"
+                              }
+                            },
+                            "taggedPeople": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/ITaggedPeople"
+                              }
+                            }
+                          },
+                          "nullable": false,
+                          "required": [
+                            "taggedDepartment",
+                            "taggedPeople"
+                          ]
+                        }
+                      },
+                      "nullable": false,
+                      "required": [
+                        "issue",
+                        "tagged_fields"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {}
+                      },
+                      "nullable": false,
+                      "required": [
+                        "error"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/issue/{issueId}": {
+      "patch": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "issueId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IPatchIssue"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/IGetIssue"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {}
+                      },
+                      "nullable": false,
+                      "required": [
+                        "error"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "issueId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/IGetIssue"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {}
+                      },
+                      "nullable": false,
+                      "required": [
+                        "error"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "issueId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/IGetIssue.Nullable"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {}
+                      },
+                      "nullable": true,
+                      "required": [
+                        "error"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/issue/project/{projectId}": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/IGetIssue"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {}
+                      },
+                      "nullable": false,
+                      "required": [
+                        "error"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ta": {
+      "get": {
+        "tags": [
+          "Turnaround"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Turnaround"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateTurnaround"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ta/{id}": {
+      "patch": {
+        "tags": [
+          "Turnaround"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IUpdateTurnaround"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ta/{id}/project": {
+      "get": {
+        "tags": [
+          "Turnaround"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Turnaround"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICreateProject.o1"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
           }
         }
       }
@@ -2469,6 +3090,16 @@
           "siteId"
         ]
       },
+      "IFindAssetTypeDTO": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false
+      },
       "IAssetType": {
         "type": "object",
         "properties": {
@@ -2729,6 +3360,58 @@
           "meta": {}
         },
         "nullable": false
+      },
+      "IGetUnit": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "meta": {},
+          "site": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "nullable": false,
+            "required": [
+              "name",
+              "id"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastUpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name",
+          "meta",
+          "site",
+          "id",
+          "sourceId",
+          "lastUpdatedAt",
+          "createdAt"
+        ]
       },
       "ICreateSite": {
         "type": "object",
@@ -3263,7 +3946,8 @@
             "type": "string",
             "format": "uuid",
             "nullable": true
-          }
+          },
+          "meta": {}
         },
         "nullable": false,
         "required": [
@@ -3566,6 +4250,116 @@
           }
         },
         "nullable": false
+      },
+      "IPatchTaskNew": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "referenceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "departmentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "vendorId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "wbsId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "order": {
+            "type": "number"
+          },
+          "durationInMin": {
+            "type": "number"
+          },
+          "milestone": {
+            "type": "string",
+            "nullable": true
+          },
+          "milestoneGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "activityType": {
+            "type": "string",
+            "nullable": true
+          },
+          "activitySubtype": {
+            "type": "string",
+            "nullable": true
+          },
+          "baselineStartAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "baselineFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "calendarId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "actualStartAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "actualFinishAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "progressPercent": {
+            "type": "number"
+          },
+          "readyToStart": {
+            "type": "boolean"
+          },
+          "actionableDelayingShutdown": {
+            "type": "boolean"
+          },
+          "isStaticCritical": {
+            "type": "boolean"
+          },
+          "progressLastUpdatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "meta": {},
+          "status": {
+            "type": "string",
+            "enum": [
+              "COMPLETED",
+              "NOT_STARTED",
+              "ONGOING"
+            ]
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id"
+        ]
       },
       "IFindAllCalendarQueryDTO": {
         "type": "object",
@@ -4472,6 +5266,10 @@
                 "unit"
               ]
             }
+          },
+          "turnaroundId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "nullable": false,
@@ -4498,6 +5296,10 @@
           },
           "name": {
             "type": "string"
+          },
+          "turnaroundId": {
+            "type": "string",
+            "format": "uuid"
           },
           "units": {
             "type": "array",
@@ -4528,6 +5330,10 @@
           },
           "delayMinutes": {
             "type": "number"
+          },
+          "turnAroundId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "nullable": false,
@@ -4572,11 +5378,189 @@
           },
           "delayMinutes": {
             "type": "number"
+          },
+          "turnAroundId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "nullable": false,
         "required": [
           "units"
+        ]
+      },
+      "ICreateMilestone": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "order": {
+            "type": "number"
+          },
+          "groupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "assetTypeId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId",
+          "name",
+          "order",
+          "groupId",
+          "assetTypeId"
+        ]
+      },
+      "ICreateMilestoneGroup": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "order": {
+            "type": "number"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "projectId",
+          "name",
+          "order"
+        ]
+      },
+      "IFindMilestoneDTO": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "assetTypeId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false
+      },
+      "IGetMilestone": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "order": {
+            "type": "number"
+          },
+          "groupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "assetTypeId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "meta",
+          "id",
+          "createdAt",
+          "lastUpdatedAt",
+          "projectId",
+          "name",
+          "order",
+          "groupId",
+          "assetTypeId"
+        ]
+      },
+      "IFindMilestoneGroupDTO": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "nullable": false
+      },
+      "IGetMilestoneGroup": {
+        "type": "object",
+        "properties": {
+          "meta": {},
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "order": {
+            "type": "number"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "meta",
+          "id",
+          "createdAt",
+          "lastUpdatedAt",
+          "projectId",
+          "name",
+          "order"
         ]
       },
       "IPlanUploadTransaction": {
@@ -5495,6 +6479,769 @@
           }
         },
         "nullable": false
+      },
+      "IGetIssue": {
+        "type": "object",
+        "properties": {
+          "taggedPeople": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "personId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "nullable": false,
+              "required": [
+                "personId"
+              ]
+            }
+          },
+          "taggedDepartment": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "departmentId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "nullable": false,
+              "required": [
+                "departmentId"
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isCritical": {
+            "type": "boolean"
+          },
+          "text": {
+            "type": "string"
+          },
+          "isOpen": {
+            "type": "boolean"
+          },
+          "everCritical": {
+            "type": "boolean"
+          },
+          "isResolved": {
+            "type": "boolean"
+          },
+          "createdById": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "editedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "closedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "resolvedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "closedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "priority": {
+            "$ref": "#/components/schemas/PriorityChoice"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "taggedPeople",
+          "taggedDepartment",
+          "id",
+          "createdAt",
+          "lastUpdatedAt",
+          "projectId",
+          "name",
+          "assetId",
+          "isCritical",
+          "text",
+          "isOpen",
+          "everCritical",
+          "isResolved",
+          "createdById",
+          "editedById",
+          "closedById",
+          "resolvedById",
+          "closedAt",
+          "priority"
+        ]
+      },
+      "PriorityChoice": {
+        "type": "string",
+        "enum": [
+          "NONE",
+          "LOW",
+          "MEDIUM",
+          "HIGH"
+        ]
+      },
+      "ICreateIssue": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdById": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "editedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "closedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "resolvedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "assetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isOpen": {
+            "type": "boolean"
+          },
+          "isCritical": {
+            "type": "boolean"
+          },
+          "everCritical": {
+            "type": "boolean"
+          },
+          "isResolved": {
+            "type": "boolean"
+          },
+          "taggedPeople": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              {
+                "type": "array",
+                "items": {},
+                "minItems": 0,
+                "maxItems": 0,
+                "x-typia-tuple": {
+                  "type": "array",
+                  "items": [],
+                  "minItems": 0,
+                  "maxItems": 0
+                }
+              }
+            ]
+          },
+          "taggedDepartment": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              {
+                "type": "array",
+                "items": {},
+                "minItems": 0,
+                "maxItems": 0,
+                "x-typia-tuple": {
+                  "type": "array",
+                  "items": [],
+                  "minItems": 0,
+                  "maxItems": 0
+                }
+              }
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "HIGH",
+              "LOW",
+              "MEDIUM",
+              "NONE"
+            ]
+          }
+        },
+        "nullable": false,
+        "required": [
+          "text",
+          "name",
+          "createdById",
+          "assetId",
+          "projectId",
+          "isOpen",
+          "isCritical",
+          "everCritical",
+          "isResolved"
+        ]
+      },
+      "ITaggedDepartment": {
+        "type": "object",
+        "properties": {
+          "issueId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "departmentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "nullable": false
+      },
+      "ITaggedPeople": {
+        "type": "object",
+        "properties": {
+          "issueId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "personId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "nullable": false
+      },
+      "IPatchIssue": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdById": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "editedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "closedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "assetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "resolvedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "isOpen": {
+            "type": "boolean"
+          },
+          "isCritical": {
+            "type": "boolean"
+          },
+          "everCritical": {
+            "type": "boolean"
+          },
+          "isResolved": {
+            "type": "boolean"
+          },
+          "taggedPeople": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              {
+                "type": "array",
+                "items": {},
+                "minItems": 0,
+                "maxItems": 0,
+                "x-typia-tuple": {
+                  "type": "array",
+                  "items": [],
+                  "minItems": 0,
+                  "maxItems": 0
+                }
+              }
+            ]
+          },
+          "taggedDepartment": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              {
+                "type": "array",
+                "items": {},
+                "minItems": 0,
+                "maxItems": 0,
+                "x-typia-tuple": {
+                  "type": "array",
+                  "items": [],
+                  "minItems": 0,
+                  "maxItems": 0
+                }
+              }
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "HIGH",
+              "LOW",
+              "MEDIUM",
+              "NONE"
+            ]
+          }
+        },
+        "nullable": false
+      },
+      "IGetIssue.Nullable": {
+        "type": "object",
+        "properties": {
+          "taggedPeople": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "personId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "nullable": false,
+              "required": [
+                "personId"
+              ]
+            }
+          },
+          "taggedDepartment": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "departmentId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "nullable": false,
+              "required": [
+                "departmentId"
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isCritical": {
+            "type": "boolean"
+          },
+          "text": {
+            "type": "string"
+          },
+          "isOpen": {
+            "type": "boolean"
+          },
+          "everCritical": {
+            "type": "boolean"
+          },
+          "isResolved": {
+            "type": "boolean"
+          },
+          "createdById": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "editedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "closedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "resolvedById": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "closedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "priority": {
+            "$ref": "#/components/schemas/PriorityChoice"
+          }
+        },
+        "nullable": true,
+        "required": [
+          "taggedPeople",
+          "taggedDepartment",
+          "id",
+          "createdAt",
+          "lastUpdatedAt",
+          "projectId",
+          "name",
+          "assetId",
+          "isCritical",
+          "text",
+          "isOpen",
+          "everCritical",
+          "isResolved",
+          "createdById",
+          "editedById",
+          "closedById",
+          "resolvedById",
+          "closedAt",
+          "priority"
+        ]
+      },
+      "ICreateTurnaround": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "ongoing": {
+            "type": "boolean"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "plannedStart": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "plannedEnd": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "actualEstStart": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "actualEstEnd": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "manhours": {
+            "type": "number"
+          },
+          "plannedTasks": {
+            "type": "number"
+          },
+          "plannedEquipments": {
+            "type": "number"
+          },
+          "budget": {
+            "type": "number"
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "name",
+          "active",
+          "ongoing",
+          "siteId",
+          "units",
+          "manhours",
+          "plannedTasks",
+          "plannedEquipments",
+          "budget"
+        ]
+      },
+      "IUpdateTurnaround": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "ongoing": {
+            "type": "boolean"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "plannedStart": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "plannedEnd": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "actualEstStart": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "actualEstEnd": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              }
+            ]
+          },
+          "manhours": {
+            "type": "number"
+          },
+          "plannedTasks": {
+            "type": "number"
+          },
+          "plannedEquipments": {
+            "type": "number"
+          },
+          "budget": {
+            "type": "number"
+          },
+          "meta": {}
+        },
+        "nullable": false
+      },
+      "ICreateProject.o1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "unitId": {
+            "type": "string"
+          },
+          "visible": {
+            "type": "boolean"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "weightedProgress": {
+            "type": "boolean"
+          },
+          "alias": {
+            "type": "string"
+          },
+          "meta": {}
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "name",
+          "siteId",
+          "unitId",
+          "visible",
+          "active",
+          "description",
+          "weightedProgress",
+          "alias"
+        ]
       }
     }
   }
